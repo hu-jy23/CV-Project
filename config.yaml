@@ -1,0 +1,20 @@
+train:
+  batch_size: 8
+  num_epochs: 100
+  learning_rate: 0.0001
+  optimizer: "adam"
+  scheduler: "cosine"
+  weight_decay: 0.0005
+
+model:
+  use_attention: true
+  flow_network: "RAFT"  # Use RAFT for optical flow
+
+data:
+  dataset_path: "./data/preprocessed/"
+  frame_size: [256, 256]
+  sequence_length: 16  # Number of frames to process in a batch
+
+logging:
+  tensorboard_log_dir: "./logs/tensorboard/"
+  wandb_project_name: "video-colorization"

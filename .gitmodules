@@ -1,0 +1,3 @@
+[submodule "Reference/FILM/frame-interpolation"]
+	path = Reference/FILM/frame-interpolation
+	url = https://github.com/google-research/frame-interpolation

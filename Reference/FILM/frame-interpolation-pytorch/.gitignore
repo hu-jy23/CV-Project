@@ -1,0 +1,14 @@
+# .gitignore
+
+
+/photos/output.mp4
+# 忽略模型目录
+model/
+film_sft/
+
+# 可选：忽略大输出文件（例如 mp4, gif）
+*.mp4
+*.gif
+*.pt
+*.pth
+*.ckpt

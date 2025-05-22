@@ -1,0 +1,5 @@
+# 忽略大文件（你可保留本地）
+code/colorization/dataset/temp/test_input/input.mp4
+code/colorization/stage1/checkpoints/colornet_iter_342000.pth
+code/colorization/stage2/checkpoints/checkpoint_decoder_finetune02010000.pth
+code/colorization/stage2/checkpoints/checkpoint_encoder_finetune02010000.pth

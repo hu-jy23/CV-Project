@@ -62,7 +62,8 @@ python inference.py "model_path" "img1" "img2" [--save_path SAVE_PATH] [--gpu] [
 Having the output video, run "frame_extraction.py" to extract frames from the video and save them to a folder:
 ```
 cd code/interpolation/
-python frame_extraction.py --input path_to_video.mp4 --output path_to_output_frames/set [--fps FPS]
+(cpu) python film_pipeline.py --input input.mp4 --model model\model_name(cpu).pt --save_dir output/set --cleanup
+(gpu) python film_pipeline_gpu.py --input input.mp4 --model model\model_name(gpu).pt --save_dir output2/set --cleanup
 ```
 Notice that you should create the folder "path_to_output_frames/" before extrction.
 

@@ -1,3 +1,4 @@
+#frame_extraction.py
 import argparse
 import os
 import cv2
@@ -8,6 +9,27 @@ def parse_args():
     parser.add_argument("--output", type=str, required=True, help="Directory to save extracted frames")
     parser.add_argument("--fps", type=float, default=None, help="Optional: target fps for frame sampling")
     return parser.parse_args()
+
+def extract_frames_from_video(input_path, output_dir, fps=None):
+    os.makedirs(output_dir, exist_ok=True)
+    cap = cv2.VideoCapture(input_path)
+    orig_fps = cap.get(cv2.CAP_PROP_FPS)
+
+    target_fps = fps if fps is not None else orig_fps
+    frame_interval = int(round(orig_fps / target_fps))
+
+    idx = 0
+    saved_idx = 0
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
+        if idx % frame_interval == 0:
+            out_path = os.path.join(output_dir, f"frame_{saved_idx:04d}.png")
+            cv2.imwrite(out_path, frame)
+            saved_idx += 1
+        idx += 1
+    cap.release()
 
 def main():
     args = parse_args()

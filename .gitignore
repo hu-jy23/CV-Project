@@ -3,3 +3,16 @@ code/colorization/dataset/temp/test_input/input.mp4
 code/colorization/stage1/checkpoints/colornet_iter_342000.pth
 code/colorization/stage2/checkpoints/checkpoint_decoder_finetune02010000.pth
 code/colorization/stage2/checkpoints/checkpoint_encoder_finetune02010000.pth
+# 忽略 Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 忽略中间输出结果
+*.zip
+output/
+output2/
+Long/
+*.mp4
+# 忽略 Jupyter notebook 检查点（可选）
+.ipynb_checkpoints/

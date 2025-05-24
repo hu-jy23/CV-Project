@@ -7,6 +7,35 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
+import cv2
+import numpy as np
+
+def read_image(path, device="cpu", align=64):
+    import numpy as np
+    import cv2
+    import torch
+
+    image = cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB).astype(np.float32) / 255.
+    h, w = image.shape[:2]
+    pad_h = (align - h % align) % align
+    pad_w = (align - w % align) % align
+    top = pad_h // 2
+    bottom = pad_h - top
+    left = pad_w // 2
+    right = pad_w - left
+
+    image = np.pad(image, ((top, bottom), (left, right), (0, 0)), mode='constant')
+    image = torch.from_numpy(image).permute(2, 0, 1).unsqueeze(0).float().to(device)  # ✅ 确保一开始就放入 device
+
+    return image, (top, left, top + h, left + w)
+
+
+
+def save_image(tensor, path):
+    image = (tensor.squeeze(0).clamp(0, 1) * 255).byte().cpu().permute(1, 2, 0).numpy()
+
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+    cv2.imwrite(path, image)
 
 def pad_batch(batch, align):
     height, width = batch.shape[1:3]

@@ -42,6 +42,7 @@ pip install -r requirements.txt
 # 🔧 Usage
 
 ## ▶ Interpolation Using exported model
+### QuickStart
 First, you need to download the checkpoint of our FILM-sft model or the original FILM model on [Quark CloudDisk](https://drive.google.com/drive/folders/1XwXQZw_q5_Z-5_Yyz7yjw_jXQ5Q_YxQ5?usp=sharing).
 
 The following script creates an MP4 video of interpolated frames between 2 input images:
@@ -59,12 +60,13 @@ python inference.py "model_path" "img1" "img2" [--save_path SAVE_PATH] [--gpu] [
 * ```--fps FPS``` FPS of the output video
 ---
 
-Having the output video, run "frame_extraction.py" to extract frames from the video and save them to a folder:
+### Apply on your video
+This probably need a long time due to uncapable to optimaze on torchscript.
 ```
 cd code/interpolation/
-python frame_extraction.py --input path_to_video.mp4 --output path_to_output_frames/set [--fps FPS]
+python film_pipeline.py --input input.mp4 --model model\model_name.pt --save_dir output/set --cleanup
 ```
-Notice that you should create the folder "path_to_output_frames/" before extrction.
+Notice that you should create the folder "output/" before application.
 
 ## ▶ Colorization
 

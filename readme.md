@@ -61,12 +61,12 @@ python inference.py "model_path" "img1" "img2" [--save_path SAVE_PATH] [--gpu] [
 ---
 
 ### Apply on your video
-Having the output video, run "frame_extraction.py" to extract frames from the video and save them to a folder:
+This probably need a long time due to uncapable to optimaze on torchscript.
 ```
 cd code/interpolation/
 python film_pipeline.py --input input.mp4 --model model\model_name.pt --save_dir output/set --cleanup
 ```
-Notice that you should create the folder "path_to_output_frames/" before extrction.
+Notice that you should create the folder "output/" before application.
 
 ## ▶ Colorization
 

@@ -84,8 +84,9 @@ python colorization/infer.py \
 
 | Stage          | Input                     | Output                       |
 |----------------|----------------------------|-------------------------------|
+| Interpolation  | Grayscale frames             | Smooth high-FPS video         |
 | Colorization   | Grayscale + Ref images     | Colored frames                |
-| Interpolation  | Colored frames             | Smooth high-FPS video         |
+
 
 See `/figures` and `/videos` for visual examples.
 

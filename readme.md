@@ -77,6 +77,49 @@ python colorization/infer.py \
   --output results/colored/
 ```
 
+# Terminal opens in TCVC folder
+
+# Create test folder and prepare video
+``` bash
+mkdir test
+```
+# Put video in test folder and name it input.mp4
+# Modify folder names in ```run_pipeline.py```
+
+# One-step completion:
+```bash
+python run_pipeline.py```
+
+# Step-by-step completion:
+
+# Step 1: Extract frames
+```bash
+python ./video_to_frames.py ./test/input.mp4 --color "./test/color" --bw "./test/input_frames"```
+# input_frames will be saved in ./test/input_frames folder
+
+# Step 2: Extract reference frame
+```bash
+python extract_ref_frame.py --input "./test/input_frames" --output "./test/stage1_input/stage1_input" --all_frame_output "./test/stage2_input"```
+
+# Alternative: Use ground truth as reference frame (skip stage1)
+```bash
+ python ./extract_ref_frame.py --input "./test/input_frames" --output "./test/stage1_input/stage1_input" --all_frame_output "./test/stage2_input" --use_ground_truth_ref --gt_source "./test/color" --gt_target "./test/stage1_output"```
+
+# Stage 1 processing
+``` bash
+python stage1/test.py --data_root_val "./test/stage1_input" --test_video_output_path "./test/stage1_output"```
+# May need to manually modify test_video_size for correct output size
+
+# Stage 2 processing
+```bash
+python stage2/inference_colorvid.py --test_path "./test/stage2_input" --ref_path "./test/stage1_output" --test_output_path "./test/stage2_output"```
+# May need to manually modify img_size for correct output size
+
+# Final video generation
+```bash
+python image_sequence_to_video.py --input ./test/stage2_output --output ./test/final_output --fps 30```
+# Adjust fps according to actual needs
+
 
 
 

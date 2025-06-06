@@ -13,6 +13,5 @@ __pycache__/
 output/
 output2/
 Long/
-*.mp4
 # 忽略 Jupyter notebook 检查点（可选）
 .ipynb_checkpoints/

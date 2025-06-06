@@ -159,4 +159,4 @@ See `/figures` and `/videos` for visual examples.
 ## 📌 Notes
 
 - See `Final_Report.pdf` for detailed explanation of models and experiments.
-## 📌 Github repo: https://github.com/hu-jy23/CV-Project/tree/update
+## 📌 Github repo: https://github.com/hu-jy23/CV-Project/tree/final_submission
